@@ -5,7 +5,11 @@ import { AnimationStep } from "./AnimationSteps";
 // uses AnimationSteps as the equivalent for AnimationControls.start
 // sample: new AnimationSequence().add(new AnimationStep()).play(animator);
 export class AnimationSequence {
-  _steps = Array<AnimationStep>();
+  _steps: Array<AnimationStep>;
+
+  constructor() {
+    this._steps = new Array<AnimationStep>();
+  }
 
   add(step: AnimationStep) {
     this._steps.push(step);

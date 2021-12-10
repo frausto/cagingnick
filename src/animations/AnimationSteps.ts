@@ -4,7 +4,7 @@ import { Vector2D } from "../position/types/Vector";
 
 // type interface where each step exposes a play function used in the orchestration clss AnimationSequence
 export type AnimationStep = {
-  play: (animator: AnimationControls) => void
+  play: (animator: AnimationControls) => void;
 }
 
 // Below are concrete implementations of the AnimationStep type interface
