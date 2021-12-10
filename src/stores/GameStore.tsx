@@ -49,7 +49,7 @@ export const gameStore = (): GameStore => {
     setAllNicks: (data: Nick[]) => {
       store.allNicks = data;
     },
-    updateNick: (nick:Nick) => {
+    updateNick: async (nick:Nick) => {
       for (let n of store.allNicks) {
         if (n.id === nick.id) { 
           n.points = nick.points;  
@@ -57,7 +57,7 @@ export const gameStore = (): GameStore => {
         }
       }
       try {
-        cageApi.update(store.allNicks);
+        await cageApi.update(store.allNicks);
       } catch(e) {
         const message = (e instanceof Error) ? e.message : String(e);
         store.setError(message);

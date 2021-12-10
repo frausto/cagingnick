@@ -14,6 +14,7 @@ import {
   ResetAnimationStep,
   VideoAnimationStep
 } from "../../animations/AnimationSteps"
+import { AnimationRunner } from "../../animations/AnimationRunner";
 
 // contains game logic
 export const GameBoard: React.FC = () => {
@@ -33,6 +34,7 @@ export const GameBoard: React.FC = () => {
   const [moveNickAnimation] = useState(new AnimationSequence());
   const moveStarAnimator = useAnimation();
   const [moveStarAnimation] = useState(new AnimationSequence());
+  const [animationRunner] = useState(new AnimationRunner());
 
   // eslint warnings on dependencies
   // went down rabbit hole of useCallback, inline wrapped functions, and removing the deps array results in compilation error
@@ -47,6 +49,8 @@ export const GameBoard: React.FC = () => {
       .add(new SetAtPositionAnimationStep(getNickPosition))
       .add(new VectorMoveAnimationStep(getCageVector))
       .add(new ResetAnimationStep());
+    animationRunner.add(moveNickAnimation, moveNickAnimator);
+    animationRunner.add(moveStarAnimation, moveStarAnimator);
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // helper method to get the game board's bounding box
@@ -90,8 +94,7 @@ export const GameBoard: React.FC = () => {
   const onNickClick = (e: React.MouseEvent<HTMLElement>) => {
     gameStore.addPoints(10);
 
-    moveStarAnimation.play(moveStarAnimator);
-    moveNickAnimation.play(moveNickAnimator);
+    animationRunner.run();
 
     // stop the event bubble 
     // otherwise assume the user has clicked on the game board in gameBoardClicked
