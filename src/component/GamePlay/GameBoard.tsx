@@ -15,18 +15,18 @@ import {
   VideoAnimationStep
 } from "../../animations/AnimationSteps"
 
-// TODO
-// test
-// - disable nick click if still animating
+// contains game logic
 export const GameBoard: React.FC = () => {
   const { gameStore } = rootStore;
   const nick = gameStore.nick;
 
   const positionRandomizer = new PositionRandomizer();
+  // used in position/vector calculations
   const gameBoardRef = useRef<HTMLDivElement>(null);
   const clickRef = useRef<HTMLDivElement>(null);
   const sparkleVideoRef = useRef<HTMLVideoElement>(null);
   const starVideoRef = useRef<HTMLVideoElement>(null);
+  // for the starting randomized position
   const [startPos, setStartPos] = useState(new Position(0, 0));
 
   const moveNickAnimator = useAnimation();
@@ -38,7 +38,6 @@ export const GameBoard: React.FC = () => {
   // went down rabbit hole of useCallback, inline wrapped functions, and removing the deps array results in compilation error
   // disaling linting for this bit -- really just need this portion to execute once
   useEffect(() => {
-    gameStore.setGameBoardRectFunc(getGameBoardRect);
     setStartPos(getRandomPosition());
     moveNickAnimation
       .add(new MoveToPositionAnimationStep(getRandomPosition))
@@ -99,6 +98,7 @@ export const GameBoard: React.FC = () => {
     e.stopPropagation();
   }
 
+  // didn't click the nick, oops
   const onGameBoardClick = () => {
     gameStore.addPoints(-3);
   }

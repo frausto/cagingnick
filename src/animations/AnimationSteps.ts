@@ -2,10 +2,14 @@ import { AnimationControls } from "framer-motion";
 import { Position } from "../position/types/Position";
 import { Vector2D } from "../position/types/Vector";
 
+// type interface where each step exposes a play function used in the orchestration clss AnimationSequence
 export type AnimationStep = {
   play: (animator: AnimationControls) => void
 }
 
+// Below are concrete implementations of the AnimationStep type interface
+// accepts dependencies via constructor injection and defines its own animation object literal used in AnimationControls.start
+// play method accepts the runtime AnimationControl since the AnimationControl is a react hook and must be instantiated inside a react component
 export class MoveToPositionAnimationStep implements AnimationStep {
   _getPosition: () => Position;
 
@@ -119,53 +123,3 @@ export class VideoAnimationStep implements AnimationStep {
     });
   }
 }
-
-/*
-const moveWithResetSequence = async (animation: AnimationControls, start: Position, to: Vector2D) => {
-  await vid();
-  // set the position to where clicked element is
-  await animation.start({
-    left: start.x + 'px',
-    top: start.y + 'px',
-    display: 'inline',
-    transition: {
-      type: 'tween',
-      duration: 0
-    }
-  });
-  // move aimation to target cage
-  await animation.start({
-    x: to.x + 'px',
-    y: to.y + 'px',
-    transition: {
-      type: 'tween',
-      duration: 0.5
-    },
-  });
-  // finish remaining animation in place and reset position
-  // remove from dom with display none - so able to click target element
-  return animation.start({
-    x: to.x + 'px',
-    y: to.y + 'px',
-    transition: {
-      type: 'tween',
-      duration: 1
-    },
-    transitionEnd: {
-      display: 'none',
-      left: 0,
-      top: 0,
-      x: 0,
-      y: 0
-    }
-  });
-}
-
-const vid = () => {
-  return new Promise<void>((resolve, reject) => {
-    const vid = document.getElementById("starVideo") as HTMLVideoElement;
-    vid.play();
-    resolve();
-  });
-}
-*/

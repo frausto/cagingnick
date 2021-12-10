@@ -14,6 +14,7 @@ export const ChooseNick: React.FC = observer(() => {
 		getData()
   }, [gameStore])
 
+  // flagged from api calls
   if (gameStore.loading) {
     return (
       <div className={styles.wrapper}>
@@ -24,6 +25,7 @@ export const ChooseNick: React.FC = observer(() => {
     )
   }
 
+  // from api calls (GET)
   if (gameStore.error !== '') {
     return (
       <div className={styles.wrapper}>

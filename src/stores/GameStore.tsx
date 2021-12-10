@@ -17,8 +17,6 @@ export type GameStore = {
   chooseNick: (nick: Nick) => void,
   getCageBound: () => Position,
   setCageBoundsFunc: (callback: () => Position) => void,
-  getGameBoardRect: () => DOMRect,
-  setGameBoardRectFunc: (callback: () => DOMRect) => void,
 };
 
 export const gameStore = (): GameStore => {
@@ -87,12 +85,6 @@ export const gameStore = (): GameStore => {
     },
     setCageBoundsFunc: (callback: () => Position) => {
       store.getCageBound = callback;
-    },
-    getGameBoardRect: () => {
-      return new DOMRect();
-    },
-    setGameBoardRectFunc: (callback: () => DOMRect) => {
-      store.getGameBoardRect = callback;
     },
   });
 

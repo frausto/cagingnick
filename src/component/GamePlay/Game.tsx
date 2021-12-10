@@ -6,6 +6,7 @@ import { GameBoard } from "./GameBoard";
 export const Game: React.FC = () => {
   const { gameStore } = rootStore;
 
+  // from api calls (PUT)
   if (gameStore.error !== '') {
     return (
       <div className={styles.wrapper}>

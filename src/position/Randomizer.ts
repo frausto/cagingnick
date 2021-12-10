@@ -2,6 +2,8 @@ import { Position } from "./types/Position"
 
 export class PositionRandomizer {
   
+  // creates random position withint the container bounds
+  // uses the target size in snap to bounds calculations
   generatePositionInRect(container: DOMRect, target: DOMRect) : Position {
     const xPercent = Math.random();
     const yPercent = Math.random();

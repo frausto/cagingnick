@@ -11,9 +11,13 @@ export const TopNav: React.FC = observer(() => {
   const cageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    // getCagePosition is used in the game board component for deriving positions/vectors
+    // since this method uses getBoundingClientRect, need to call it during run time as the return value changes
+    // depending on the position of the viewport/scrolling
     gameStore.setCageBoundsFunc(getCagePosition);
   }, [])
 
+  // uses the cageRef as HTMLElement to get its position
   const getCagePosition = (): Position => {
     const cageElement = cageRef?.current as HTMLElement;
     const cageBound = cageElement.getBoundingClientRect();

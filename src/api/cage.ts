@@ -1,5 +1,6 @@
 import { Nick } from '../types/Nick'
 
+// Calls the firehase API, expects callers to handle any errors
 export class CageApi {
     // hardcoded configuration here -- should be loaded per env as necessary
     apiUrl = "https://cagingnick-default-rtdb.firebaseio.com/cage/peggy.json";
