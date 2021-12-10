@@ -1,0 +1,14 @@
+.nickChoice{
+  height: 10vw;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+.nickImage{
+  height: 100%;
+}
+
+.choosen{
+  font-size: 2vw;
+}

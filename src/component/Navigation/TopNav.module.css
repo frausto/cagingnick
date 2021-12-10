@@ -1,0 +1,51 @@
+.topNavArea{
+  padding: 0 5vw 2vw 5vw;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+}
+
+.title{
+  padding-top: 2vw;
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+.cageArea{
+  flex-grow: 100;
+  text-align: center;
+  padding-top: 1vw;
+  
+}
+
+.nickAndCage{
+  display: inline-block;
+  position: relative;
+  height: 10vw;
+  width: 10vw;
+}
+
+.cageImageContainer {
+  position: relative;
+  display: inline;
+}
+
+.cageImage{
+  width: 10vw;
+  position: relative;
+  right: 0;
+  top:0;
+  z-index: 1;
+}
+
+.nickImage{
+  position: absolute;
+  right: 0.5vw;
+  bottom: 1.2vw;
+  width: 8.5vw;
+}
+
+.pointCount{
+  font-weight: bold;
+  font-size: 5vw;
+  margin-left: 1vw;
+}

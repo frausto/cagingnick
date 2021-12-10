@@ -1,0 +1,16 @@
+.wrapper{
+  padding: 5vw;
+  background-color: #eee;
+}
+
+.centerWrapper {
+  text-align: center;
+}
+
+.warning {
+  color: red;
+}
+
+.warning img {
+  height: 50px;
+}

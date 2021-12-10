@@ -1,0 +1,23 @@
+/* The bounding box should be 10% padding on each side. */
+.wrapper{
+  padding: 5vw 10vw;
+  /* The height should be such that the bottom border should always be 20px from the bottom of the screen no matter the screen size */
+  padding-bottom: 20px;
+  background-color: #eee;
+  height: 100%;
+  
+  display: flex;
+  flex-direction:column;
+}
+
+.centerWrapper {
+  text-align: center;
+}
+
+.warning {
+  color: red;
+}
+
+.warning img {
+  height: 50px;
+}
